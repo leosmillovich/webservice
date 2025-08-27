@@ -72,7 +72,7 @@ export default function Benefits() {
         <div className="text-center mt-12">
           <div className="inline-flex items-center gap-2 bg-green-50 text-green-800 px-4 py-2 rounded-full">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            <span className="text-sm font-medium">Comercios locales ya tienen su web con nosotros</span>
+            <span className="text-sm font-medium">+150 comercios locales ya tienen su web con nosotros</span>
           </div>
         </div>
       </div>

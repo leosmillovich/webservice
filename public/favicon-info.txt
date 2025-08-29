@@ -1,0 +1,25 @@
+FAVICON INSTRUCCIONES ACTUALIZADAS:
+
+El favicon.svg ha sido simplificado para mejor compatibilidad.
+
+Para generar el favicon.ico:
+
+1. Abrir el archivo favicon.svg en un navegador
+2. Hacer clic derecho y "Guardar como imagen" o usar herramientas como:
+   - https://favicon.io/favicon-converter/
+   - https://convertio.co/svg-ico/
+   - https://www.icoconverter.com/
+
+3. El SVG simplificado tiene:
+   - Tamaño: 32x32 píxeles
+   - Fondo azul circular (#2563eb)
+   - Cohete amarillo con detalles azules y rojos
+   - Estrellas decorativas
+
+4. Si el favicon sigue sin aparecer:
+   - Limpiar caché del navegador
+   - Verificar que el servidor esté corriendo
+   - Revisar la consola del navegador por errores
+
+El favicon.svg debería funcionar en navegadores modernos.
+El favicon.ico es necesario para compatibilidad con navegadores antiguos.

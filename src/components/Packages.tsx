@@ -39,6 +39,24 @@ export default function Packages() {
         "2 revisiones incluidas"
       ],
       notIncluded: []
+    },
+    {
+      name: "Premium",
+      price: "USD 599-799",
+      popular: false,
+      description: "La opción para clientes que quieren destacar al máximo",
+      features: [
+        "Todo lo del paquete Pro",
+        "Branding inicial (colores, tipografías, favicon, kit de plantillas para redes)",
+        "Google My Business optimizado y vinculado a la web",
+        "Automatización de pedidos (form → Google Sheets + email automático)",
+        "Dashboard en Looker Studio con métricas de visitas y conversiones",
+        "Página extra (ej: catálogo, portafolio o blog simple)",
+        "3 rondas de revisión incluidas",
+        "Entrega en 10–14 días",
+        "Soporte extendido 30 días post-publicación"
+      ],
+      notIncluded: []
     }
   ];
 
@@ -61,20 +79,20 @@ export default function Packages() {
         </div>
 
         {/* Tabla comparativa */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {packages.map((pkg, index) => (
             <div 
               key={index}
-              className={`relative p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl ${
+              className={`relative p-8 rounded-2xl shadow-lg transition-all duration-500 flex flex-col ${
                 pkg.popular 
-                  ? 'bg-blue-600 text-white transform scale-105' 
-                  : 'bg-white text-gray-900 hover:-translate-y-1'
+                  ? 'bg-blue-600 text-white transform scale-105 shadow-xl hover:scale-110 border-2 border-blue-500' 
+                  : 'bg-white text-gray-900 hover:-translate-y-2 hover:shadow-xl'
               }`}
             >
               {pkg.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-yellow-400 text-yellow-900 px-4 py-1">
-                    <Star className="w-4 h-4 mr-1" />
+                  <Badge className="bg-yellow-400 text-yellow-900 px-4 py-2 font-semibold shadow-md">
+                    <Star className="w-4 h-4 mr-2" />
                     Más elegido
                   </Badge>
                 </div>
@@ -92,7 +110,7 @@ export default function Packages() {
                 </p>
               </div>
 
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-8 flex-grow">
                 {pkg.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <Check className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
@@ -114,10 +132,10 @@ export default function Packages() {
               </ul>
 
               <Button 
-                className={`w-full py-3 text-lg rounded-xl transition-all duration-300 ${
+                className={`w-full py-4 text-lg rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                   pkg.popular
-                    ? 'bg-white text-blue-600 hover:bg-gray-100'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                    ? 'bg-white text-blue-600 hover:bg-gray-100 hover:shadow-lg shadow-md'
+                    : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg shadow-md'
                 }`}
                 onClick={() => window.open('https://wa.me/5493572609036', '_blank')}
               >

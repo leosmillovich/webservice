@@ -79,6 +79,12 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
+                  <a href="#packages" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 flex items-center gap-2 group">
+                    <span>Páginas web Premium</span>
+                    <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </a>
+                </li>
+                <li>
                   <span className="text-gray-600">Configuración de dominio</span>
                 </li>
                 <li>

@@ -46,6 +46,18 @@
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://images.unsplash.com" />
       
+      <!-- Font optimization -->
+      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel=x27stylesheetx27" />
+      <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+      
+      <!-- Critical CSS preload -->
+      <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel=x27stylesheetx27" />
+      <noscript><link rel="stylesheet" href="/src/index.css" /></noscript>
+      
+      <!-- DNS prefetch for external resources -->
+      <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+      <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+      <link rel="dns-prefetch" href="//images.unsplash.com" />      
       <!-- Google tag (gtag.js) -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX4X124TEQ"></script>
       <script>

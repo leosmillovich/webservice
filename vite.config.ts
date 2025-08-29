@@ -52,7 +52,18 @@
     build: {
       target: 'esnext',
       outDir: 'dist',
-    },
+      minify: 'esbuild',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom'],
+            ui: ['@radix-ui/react-accordion', '@radix-ui/react-alert-dialog', '@radix-ui/react-avatar'],
+            icons: ['lucide-react']
+          }
+        }
+      },
+      cssCodeSplit: true,
+      assetsInlineLimit: 4096    },
     server: {
       port: 3000,
       open: true,

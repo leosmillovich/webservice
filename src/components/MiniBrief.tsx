@@ -1,4 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+// Declaración de tipos para Google Analytics
+declare global {
+  interface Window {
+    gtag: (
+      command: 'event',
+      action: string,
+      parameters: {
+        event_category: string;
+        event_label: string;
+        value?: number;
+        [key: string]: any;
+      }
+    ) => void;
+  }
+}
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
@@ -17,6 +33,17 @@ export default function MiniBrief() {
   });
   
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Trackear cuando el usuario ve el formulario
+  useEffect(() => {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'form_view', {
+        'event_category': 'MiniBrief',
+        'event_label': 'Formulario visible',
+        'value': 1
+      });
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,6 +81,22 @@ ${formData.domain}
     // Abrir WhatsApp con el mensaje pre-llenado
     window.open(whatsappUrl, "_blank");
     
+    // Trackear envío exitoso
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'form_submit', {
+        'event_category': 'MiniBrief',
+        'event_label': 'Brief completo enviado',
+        'value': 1
+      });
+      
+      // Trackear apertura de WhatsApp
+      window.gtag('event', 'whatsapp_opened', {
+        'event_category': 'MiniBrief',
+        'event_label': 'WhatsApp abierto',
+        'value': 1
+      });
+    }
+    
     // Marcar como enviado
     setIsSubmitted(true);
     
@@ -75,6 +118,19 @@ ${formData.domain}
       ...prev,
       [field]: value
     }));
+    
+    // Trackear progreso del formulario
+    const currentFormData = {...formData, [field]: value};
+    const filledFields = Object.values(currentFormData).filter((v): v is string => typeof v === 'string' && v.trim() !== '').length;
+    const progress = Math.round((filledFields / 6) * 100);
+    
+    if (typeof window.gtag !== 'undefined' && progress % 25 === 0 && progress > 0) {
+      window.gtag('event', 'form_progress', {
+        'event_category': 'MiniBrief',
+        'event_label': `${progress}% completado`,
+        'value': progress
+      });
+    }
   };
 
   if (isSubmitted) {
@@ -92,7 +148,17 @@ ${formData.domain}
               Se abrió WhatsApp con tu brief completo. Solo tenés que hacer clic en "Enviar" para que lo recibamos.
             </p>
             <Button 
-              onClick={() => window.open('https://wa.me/5493572609036', '_blank')}
+              onClick={() => {
+                // Trackear clic en botón de WhatsApp
+                if (typeof window.gtag !== 'undefined') {
+                  window.gtag('event', 'whatsapp_button_click', {
+                    'event_category': 'MiniBrief',
+                    'event_label': 'Botón WhatsApp desde éxito',
+                    'value': 1
+                  });
+                }
+                window.open('https://wa.me/5493572609036', '_blank');
+              }}
               className="bg-blue-600 hover:bg-blue-700"
             >
               Ir a WhatsApp

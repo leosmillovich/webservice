@@ -20,16 +20,56 @@ export default function MiniBrief() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí iría la lógica para enviar a Google Sheets
-    console.log('Form submitted:', formData);
+    
+    // Crear mensaje de WhatsApp con todos los datos del brief
+    const whatsappMessage = `*NUEVO BRIEF RECIBIDO - Tuwebdeventas*
+
+*OBJETIVO PRINCIPAL:*
+${formData.objective}
+
+*PUBLICO OBJETIVO:*
+${formData.target}
+
+*OFERTA PRINCIPAL:*
+${formData.offer}
+
+*BRANDING Y REFERENCIAS:*
+${formData.brand}
+
+*CONTACTO:*
+${formData.contact}
+
+*DOMINIO Y HERRAMIENTAS:*
+${formData.domain}
+
+---
+*Enviado desde:* Landing Page Tuwebdeventas
+*Fecha:* ${new Date().toLocaleDateString("es-AR")}
+*Hora:* ${new Date().toLocaleTimeString("es-AR")}`;
+
+    // Codificar el mensaje para WhatsApp
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const whatsappUrl = `https://wa.me/5493572609036?text=${encodedMessage}`;
+    
+    // Abrir WhatsApp con el mensaje pre-llenado
+    window.open(whatsappUrl, "_blank");
+    
+    // Marcar como enviado
     setIsSubmitted(true);
     
-    // Simulamos envío exitoso
+    // Resetear formulario después de un tiempo
     setTimeout(() => {
       setIsSubmitted(false);
-    }, 3000);
+      setFormData({
+        objective: "",
+        target: "",
+        offer: "",
+        brand: "",
+        contact: "",
+        domain: ""
+      });
+    }, 5000);
   };
-
   const handleChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
@@ -46,10 +86,10 @@ export default function MiniBrief() {
               <CheckCircle className="w-16 h-16 text-green-500" />
             </div>
             <h3 className="text-2xl text-gray-900 mb-4">
-              ¡Brief recibido correctamente!
+              ¡Brief enviado correctamente!
             </h3>
             <p className="text-gray-600 mb-6">
-              Te vamos a contactar por WhatsApp en las próximas horas para arrancar con tu web.
+              Se abrió WhatsApp con tu brief completo. Solo tenés que hacer clic en "Enviar" para que lo recibamos.
             </p>
             <Button 
               onClick={() => window.open('https://wa.me/5493572609036', '_blank')}
@@ -169,10 +209,10 @@ export default function MiniBrief() {
                 size="lg"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Enviar brief y empezar
+                Enviar brief por WhatsApp
               </Button>
               <p className="text-sm text-gray-500 mt-4">
-                Al enviar este formulario, te contactaremos por WhatsApp para confirmar detalles y comenzar tu proyecto.
+                Al enviar este formulario, se abrirá WhatsApp con tu brief completo listo para enviar.
               </p>
             </div>
           </form>

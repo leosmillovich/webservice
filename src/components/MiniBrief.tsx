@@ -135,7 +135,7 @@ ${formData.domain}
 
   if (isSubmitted) {
     return (
-      <section className="py-20 bg-blue-50">
+      <section id="brief" className="py-20 bg-blue-50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Card className="text-center p-8">
             <div className="flex justify-center mb-4">
@@ -170,7 +170,7 @@ ${formData.domain}
   }
 
   return (
-    <section className="py-20 bg-blue-50">
+    <section id="brief" className="py-20 bg-blue-50">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl text-gray-900 mb-4">

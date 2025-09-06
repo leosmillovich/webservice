@@ -8,6 +8,7 @@ import FAQ from './components/FAQ';
 import MiniBrief from './components/MiniBrief';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
+import ConsentBanner from './components/ConsentBanner';
 
 export default function App() {
   return (
@@ -38,6 +39,9 @@ export default function App() {
       
       {/* 9. Footer */}
       <Footer />
+      
+      {/* 10. Banner de cookies */}
+      <ConsentBanner />
     </div>
   );
 }

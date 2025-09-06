@@ -57,7 +57,22 @@
       <!-- DNS prefetch for external resources -->
       <link rel="dns-prefetch" href="//www.googletagmanager.com" />
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-      <link rel="dns-prefetch" href="//images.unsplash.com" />      
+      <link rel="dns-prefetch" href="//images.unsplash.com" />
+      
+      <!-- Consent Mode v2 - Default: denied hasta que el usuario elija -->
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+          'ad_storage': 'denied',
+          'analytics_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied',
+          'functionality_storage': 'granted',
+          'security_storage': 'granted'
+        });
+      </script>
+      
       <!-- Google tag (gtag.js) -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX4X124TEQ"></script>
       <script>

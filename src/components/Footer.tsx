@@ -165,9 +165,12 @@ export default function Footer() {
               <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors duration-300">
                 Política de privacidad
               </a>
-              <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors duration-300">
-                Política de cookies
-              </a>
+              <button 
+                onClick={() => window.__openConsent?.()}
+                className="text-gray-500 hover:text-gray-900 transition-colors duration-300"
+              >
+                Gestionar cookies
+              </button>
             </div>
           </div>
         </div>

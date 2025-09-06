@@ -26,7 +26,9 @@ export default function Packages() {
     },
     {
       name: "Pro",
-      price: "USD 299-399",
+      // OFERTA: Comentar la línea de abajo para activar precio promocional
+      price: "USD 199", // "USD 299-399", // Precio original comentado
+      originalPrice: "USD 299-399", // Precio original para mostrar tachado
       popular: true,
       description: "La opción más completa",
       features: [
@@ -98,6 +100,15 @@ export default function Packages() {
                 </div>
               )}
 
+              {/* OFERTA: Comentar estas líneas para activar badge de cupos limitados */}
+              {pkg.name === "Pro" && (
+                <div className="absolute -top-2 -right-2">
+                  <Badge className="bg-red-500 text-white px-3 py-1 text-xs font-bold animate-pulse shadow-lg">
+                    Solo 5 cupos
+                  </Badge>
+                </div>
+              )}
+
               <div className="text-center mb-8">
                 <h3 className={`text-2xl mb-2 ${pkg.popular ? 'text-white' : 'text-gray-900'}`}>
                   {pkg.name}
@@ -105,6 +116,15 @@ export default function Packages() {
                 <div className={`text-4xl mb-2 ${pkg.popular ? 'text-white' : 'text-blue-600'}`}>
                   {pkg.price}
                 </div>
+                {/* OFERTA: Comentar estas líneas para mostrar precio original tachado */}
+                {pkg.name === "Pro" && pkg.originalPrice && (
+                  <div className={`text-lg mb-2 ${pkg.popular ? 'text-blue-200' : 'text-gray-500'}`}>
+                    <span className="line-through">{pkg.originalPrice}</span>
+                    <span className={`ml-2 text-green-500 font-semibold ${pkg.popular ? 'text-green-300' : 'text-green-600'}`}>
+                      ¡Ahorrás USD 100-200!
+                    </span>
+                  </div>
+                )}
                 <p className={`text-sm ${pkg.popular ? 'text-blue-100' : 'text-gray-600'}`}>
                   {pkg.description}
                 </p>

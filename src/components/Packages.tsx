@@ -26,7 +26,7 @@ export default function Packages() {
     },
     {
       name: "Pro",
-      // OFERTA: Comentar la línea de abajo para activar precio promocional
+      // OFERTA: Conpm run
       price: "USD 199", // "USD 299-399", // Precio original comentado
       originalPrice: "USD 299-399", // Precio original para mostrar tachado
       popular: true,
@@ -119,10 +119,10 @@ export default function Packages() {
                 {/* OFERTA: Comentar estas líneas para mostrar precio original tachado */}
                 {pkg.name === "Pro" && pkg.originalPrice && (
                   <div className={`text-lg mb-2 ${pkg.popular ? 'text-blue-200' : 'text-gray-500'}`}>
-                    <span className="line-through">{pkg.originalPrice}</span>
-                    <span className={`ml-2 text-green-500 font-semibold ${pkg.popular ? 'text-green-300' : 'text-green-600'}`}>
+                    <div className="line-through">{pkg.originalPrice}</div>
+                    <div className={`text-green-500 font-semibold ${pkg.popular ? 'text-green-300' : 'text-green-600'}`}>
                       ¡Ahorrás USD 100-200!
-                    </span>
+                    </div>
                   </div>
                 )}
                 <p className={`text-sm ${pkg.popular ? 'text-blue-100' : 'text-gray-600'}`}>

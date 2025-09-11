@@ -157,7 +157,7 @@ export default function Packages() {
                     ? 'bg-white text-blue-600 hover:bg-gray-100 hover:shadow-lg shadow-md'
                     : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg shadow-md'
                 }`}
-                onClick={() => window.open('https://wa.me/5493572609036', '_blank')}
+                onClick={() => document.getElementById('brief')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Elegir {pkg.name}
               </Button>

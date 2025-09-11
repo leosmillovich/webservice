@@ -3,8 +3,6 @@ export const siteConfig = {
   company: {
     name: "Tuwebdeventas",
     email: "leosmillovich@gmail.com",
-    phone: "+54 9 357 260-9036",
-    whatsapp: "https://wa.me/5493572609036",
     location: "Río Segundo, Córdoba",
     address: "Río Segundo, Córdoba, Argentina",
     hours: "Lun a Vie 9:00 - 18:00"

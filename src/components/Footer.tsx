@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, Mail, MapPin, Clock, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, Clock, ExternalLink } from 'lucide-react';
 import { Button } from './ui/button';
 
 export default function Footer() {
@@ -20,16 +20,6 @@ export default function Footer() {
               </div>
               
               <div className="space-y-4">
-                <div className="flex items-center gap-3 group">
-                  <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                    <MessageCircle className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-gray-500">WhatsApp</div>
-                    <div className="text-gray-900">+54 9 357 260-9036</div>
-                  </div>
-                </div>
-                
                 <div className="flex items-center gap-3 group">
                   <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                     <Mail className="w-5 h-5" />
@@ -121,12 +111,9 @@ export default function Footer() {
                   <a href="#brief" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 block">
                     Empezar proyecto
                   </a>
-                  <button 
-                    onClick={() => window.open('https://wa.me/5493572609036', '_blank')}
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-left"
-                  >
+                  <a href="#brief" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 block">
                     Contactar ahora
-                  </button>
+                  </a>
                 </div>
               </div>
               
@@ -134,15 +121,15 @@ export default function Footer() {
               <div className="mt-8 p-6 bg-blue-50 rounded-2xl border border-blue-100">
                 <h5 className="text-gray-900 mb-2">¿Listo para empezar?</h5>
                 <p className="text-gray-600 text-sm mb-4">
-                  Charlemos sobre tu proyecto sin compromiso
+                  Completa el formulario y te contactamos pronto
                 </p>
-                <Button 
-                  onClick={() => window.open('https://wa.me/5493572609036', '_blank')}
-                  className="bg-blue-600 hover:bg-blue-700 text-white w-full"
+                <a 
+                  href="#brief"
+                  className="bg-blue-600 hover:bg-blue-700 text-white w-full inline-flex items-center justify-center px-4 py-2 rounded-lg transition-colors duration-300"
                 >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Hablar por WhatsApp
-                </Button>
+                  <Mail className="w-4 h-4 mr-2" />
+                  Enviar consulta
+                </a>
               </div>
             </div>
           </div>
@@ -166,7 +153,7 @@ export default function Footer() {
                 Política de privacidad
               </a>
               <button 
-                onClick={() => window.__openConsent?.()}
+                onClick={() => (window as any).__openConsent?.()}
                 className="text-gray-500 hover:text-gray-900 transition-colors duration-300"
               >
                 Gestionar cookies
@@ -188,16 +175,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* CTA flotante sticky (solo en mobile) */}
-      <div className="fixed bottom-4 left-4 right-4 md:hidden z-50">
-        <button 
-          onClick={() => window.open('https://wa.me/5493572609036', '_blank')}
-          className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl shadow-2xl flex items-center justify-center gap-2 transition-all duration-300"
-        >
-          <MessageCircle className="w-5 h-5" />
-          Hablar por WhatsApp
-        </button>
-      </div>
     </footer>
   );
 }

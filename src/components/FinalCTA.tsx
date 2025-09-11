@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from './ui/button';
-import { MessageCircle, Clock, Shield, Zap } from 'lucide-react';
+import { Mail, Clock, Shield, Zap } from 'lucide-react';
 
 export default function FinalCTA() {
   return (
@@ -42,10 +42,10 @@ export default function FinalCTA() {
           <Button 
             size="lg"
             className="bg-white text-blue-600 hover:bg-gray-100 px-12 py-6 text-xl rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 mb-4"
-            onClick={() => window.open('https://wa.me/5493572609036', '_blank')}
+            onClick={() => document.getElementById('brief')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <MessageCircle className="w-6 h-6 mr-3" />
-            Hablar por WhatsApp ahora
+            <Mail className="w-6 h-6 mr-3" />
+            Empezar mi proyecto ahora
           </Button>
           
           <div className="flex flex-wrap justify-center gap-6 text-sm text-blue-100">

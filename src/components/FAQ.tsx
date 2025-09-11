@@ -87,10 +87,10 @@ export default function FAQ() {
             ¿No encontraste respuesta a tu pregunta?
           </p>
           <button 
-            onClick={() => window.open('https://wa.me/5493572609036', '_blank')}
+            onClick={() => document.getElementById('brief')?.scrollIntoView({ behavior: 'smooth' })}
             className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-all duration-300"
           >
-            Preguntanos por WhatsApp
+            Enviar consulta
           </button>
         </div>
       </div>

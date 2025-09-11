@@ -48,51 +48,11 @@ export default function MiniBrief() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Crear mensaje de WhatsApp con todos los datos del brief
-    const whatsappMessage = `*NUEVO BRIEF RECIBIDO - Tuwebdeventas*
-
-*OBJETIVO PRINCIPAL:*
-${formData.objective}
-
-*PUBLICO OBJETIVO:*
-${formData.target}
-
-*OFERTA PRINCIPAL:*
-${formData.offer}
-
-*BRANDING Y REFERENCIAS:*
-${formData.brand}
-
-*CONTACTO:*
-${formData.contact}
-
-*DOMINIO Y HERRAMIENTAS:*
-${formData.domain}
-
----
-*Enviado desde:* Landing Page Tuwebdeventas
-*Fecha:* ${new Date().toLocaleDateString("es-AR")}
-*Hora:* ${new Date().toLocaleTimeString("es-AR")}`;
-
-    // Codificar el mensaje para WhatsApp
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappUrl = `https://wa.me/5493572609036?text=${encodedMessage}`;
-    
-    // Abrir WhatsApp con el mensaje pre-llenado
-    window.open(whatsappUrl, "_blank");
-    
     // Trackear envío exitoso
     if (typeof window.gtag !== 'undefined') {
       window.gtag('event', 'form_submit', {
         'event_category': 'MiniBrief',
         'event_label': 'Brief completo enviado',
-        'value': 1
-      });
-      
-      // Trackear apertura de WhatsApp
-      window.gtag('event', 'whatsapp_opened', {
-        'event_category': 'MiniBrief',
-        'event_label': 'WhatsApp abierto',
         'value': 1
       });
     }
@@ -145,23 +105,24 @@ ${formData.domain}
               ¡Brief enviado correctamente!
             </h3>
             <p className="text-gray-600 mb-6">
-              Se abrió WhatsApp con tu brief completo. Solo tenés que hacer clic en "Enviar" para que lo recibamos.
+              Tu brief fue enviado correctamente. Te contactaremos pronto para continuar con tu proyecto.
             </p>
             <Button 
               onClick={() => {
-                // Trackear clic en botón de WhatsApp
+                // Trackear clic en botón de contacto
                 if (typeof window.gtag !== 'undefined') {
-                  window.gtag('event', 'whatsapp_button_click', {
+                  window.gtag('event', 'contact_button_click', {
                     'event_category': 'MiniBrief',
-                    'event_label': 'Botón WhatsApp desde éxito',
+                    'event_label': 'Botón contacto desde éxito',
                     'value': 1
                   });
                 }
-                window.open('https://wa.me/5493572609036', '_blank');
+                // Scroll al formulario principal
+                document.getElementById('brief')?.scrollIntoView({ behavior: 'smooth' });
               }}
               className="bg-blue-600 hover:bg-blue-700"
             >
-              Ir a WhatsApp
+              Continuar con el proyecto
             </Button>
           </Card>
         </div>

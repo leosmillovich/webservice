@@ -29,9 +29,9 @@ export default function Hero() {
               <Button 
                 size="lg"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                onClick={() => window.open('https://wa.me/5493572609036', '_blank')}
+                onClick={() => document.getElementById('brief')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Hablar por WhatsApp
+                Empezar mi proyecto
               </Button>
               <Button 
                 variant="outline" 

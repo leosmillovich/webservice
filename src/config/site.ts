@@ -8,18 +8,24 @@ export const siteConfig = {
     hours: "Lun a Vie 9:00 - 18:00"
   },
 
+  // Configuración de contacto para formularios
+  contact: {
+    whatsapp: "+5493572609036", // Cambiar por tu número real de WhatsApp
+    email: "leosmillovich@gmail.com" // Email donde recibir los briefs
+  },
+
   // URLs y dominios
   urls: {
     domain: "tuwebdeventas.com", // Cambiar por tu dominio real
-    canonical: "https://tuwebdeventas.com",
-    ogImage: "https://tuwebdeventas.com/og-image.jpg",
-    twitterImage: "https://tuwebdeventas.com/twitter-image.jpg"
+    canonical: "https://tuwebdeventas.vercel.app/",
+    ogImage: "https://tuwebdeventas.vercel.app//og-image.jpg",
+    twitterImage: "https://tuwebdeventas.vercel.app/twitter-image.jpg"
   },
 
   // Analytics y tracking
   analytics: {
-    googleAnalyticsId: "G-XXXXXXXXXX", // Cambiar por tu ID real de GA4
-    metaPixelId: "XXXXXXXXXX" // Cambiar por tu ID real de Meta Pixel
+    googleAnalyticsId: "G-YX4X124TEQ", // Cambiar por tu ID real de GA4
+    metaPixelId: "770934735641506" // Cambiar por tu ID real de Meta Pixel
   },
 
   // SEO

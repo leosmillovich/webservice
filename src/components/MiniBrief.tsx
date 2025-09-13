@@ -21,6 +21,7 @@ import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
 import { Clock, CheckCircle } from 'lucide-react';
+import { siteConfig } from '../config/site';
 
 export default function MiniBrief() {
   const [formData, setFormData] = useState({
@@ -57,6 +58,73 @@ export default function MiniBrief() {
       });
     }
     
+    // Crear el mensaje para WhatsApp
+    const whatsappMessage = `¡Hola! Te envío mi brief para mi nueva web:
+
+*** MINI-BRIEF COMPLETO ***
+
+*** Objetivo principal: ***
+${formData.objective}
+
+*** Público objetivo: ***
+${formData.target}
+
+*** Oferta principal: ***
+${formData.offer}
+
+*** Branding y referencias: ***
+${formData.brand}
+
+*** Contacto: ***
+${formData.contact}
+
+*** Dominio y herramientas: ***
+${formData.domain}
+
+¡Espero tu respuesta para continuar con el proyecto!`;
+
+    // Crear el mensaje para email
+    const emailSubject = `Nuevo Brief - ${formData.brand.split(' ')[0] || 'Cliente'}`;
+    const emailBody = `Nuevo brief recibido desde la landing page:
+
+OBJETIVO PRINCIPAL:
+${formData.objective}
+
+PÚBLICO OBJETIVO:
+${formData.target}
+
+OFERTA PRINCIPAL:
+${formData.offer}
+
+BRANDING Y REFERENCIAS:
+${formData.brand}
+
+CONTACTO:
+${formData.contact}
+
+DOMINIO Y HERRAMIENTAS:
+${formData.domain}
+
+---
+Enviado desde: ${window.location.href}
+Fecha: ${new Date().toLocaleString('es-AR')}`;
+
+    // Enviar por WhatsApp
+    const whatsappNumber = siteConfig.contact.whatsapp;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    // Enviar por email usando mailto
+    const emailAddress = siteConfig.contact.email;
+    const emailUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Abrir WhatsApp en nueva ventana
+    window.open(whatsappUrl, '_blank');
+    
+    // También abrir email como respaldo
+    setTimeout(() => {
+      window.open(emailUrl, '_blank');
+    }, 1000);
+    
     // Marcar como enviado
     setIsSubmitted(true);
     
@@ -71,7 +139,7 @@ export default function MiniBrief() {
         contact: "",
         domain: ""
       });
-    }, 5000);
+    }, 10000); // Aumenté el tiempo para que el usuario pueda ver el mensaje
   };
   const handleChange = (field: string, value: string) => {
     setFormData(prev => ({
@@ -105,7 +173,8 @@ export default function MiniBrief() {
               ¡Brief enviado correctamente!
             </h3>
             <p className="text-gray-600 mb-6">
-              Tu brief fue enviado correctamente. Te contactaremos pronto para continuar con tu proyecto.
+              Se abrió WhatsApp y tu cliente de email con tu brief completo listo para enviar. 
+              Solo tenés que hacer clic en "Enviar" en cada aplicación.
             </p>
             <Button 
               onClick={() => {
@@ -248,8 +317,8 @@ export default function MiniBrief() {
         {/* Nota técnica */}
         <div className="text-center mt-8">
           <p className="text-xs text-gray-500">
-            📝 <strong>Nota técnica:</strong> Este formulario está configurado para enviar automáticamente 
-            las respuestas a Google Sheets y notificarnos por email para respuesta inmediata.
+            📝 <strong>Nota técnica:</strong> Al enviar este formulario se abrirá WhatsApp Web y tu cliente de email 
+            con el brief completo listo para enviar. Solo necesitás hacer clic en "Enviar" en cada aplicación.
           </p>
         </div>
       </div>

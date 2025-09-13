@@ -25,7 +25,6 @@ export const siteConfig = {
   // Analytics y tracking
   analytics: {
     googleAnalyticsId: "G-YX4X124TEQ", // Cambiar por tu ID real de GA4
-    metaPixelId: "770934735641506" // Cambiar por tu ID real de Meta Pixel
   },
 
   // SEO

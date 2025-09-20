@@ -26,11 +26,8 @@ import { siteConfig } from '../config/site';
 export default function MiniBrief() {
   const [formData, setFormData] = useState({
     objective: '',
-    target: '',
-    offer: '',
     brand: '',
-    contact: '',
-    domain: ''
+    contact: ''
   });
   
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -66,20 +63,11 @@ export default function MiniBrief() {
 *** Objetivo principal: ***
 ${formData.objective}
 
-*** Público objetivo: ***
-${formData.target}
-
-*** Oferta principal: ***
-${formData.offer}
-
 *** Branding y referencias: ***
 ${formData.brand}
 
 *** Contacto: ***
 ${formData.contact}
-
-*** Dominio y herramientas: ***
-${formData.domain}
 
 ¡Espero tu respuesta para continuar con el proyecto!`;
 
@@ -90,20 +78,11 @@ ${formData.domain}
 OBJETIVO PRINCIPAL:
 ${formData.objective}
 
-PÚBLICO OBJETIVO:
-${formData.target}
-
-OFERTA PRINCIPAL:
-${formData.offer}
-
 BRANDING Y REFERENCIAS:
 ${formData.brand}
 
 CONTACTO:
 ${formData.contact}
-
-DOMINIO Y HERRAMIENTAS:
-${formData.domain}
 
 ---
 Enviado desde: ${window.location.href}
@@ -133,11 +112,8 @@ Fecha: ${new Date().toLocaleString('es-AR')}`;
       setIsSubmitted(false);
       setFormData({
         objective: "",
-        target: "",
-        offer: "",
         brand: "",
-        contact: "",
-        domain: ""
+        contact: ""
       });
     }, 10000); // Aumenté el tiempo para que el usuario pueda ver el mensaje
   };
@@ -150,7 +126,7 @@ Fecha: ${new Date().toLocaleString('es-AR')}`;
     // Trackear progreso del formulario
     const currentFormData = {...formData, [field]: value};
     const filledFields = Object.values(currentFormData).filter((v): v is string => typeof v === 'string' && v.trim() !== '').length;
-    const progress = Math.round((filledFields / 6) * 100);
+    const progress = Math.round((filledFields / 3) * 100);
     
     if (typeof window.gtag !== 'undefined' && progress % 25 === 0 && progress > 0) {
       window.gtag('event', 'form_progress', {
@@ -207,11 +183,11 @@ Fecha: ${new Date().toLocaleString('es-AR')}`;
             ¿Listo para empezar? Completá el mini-brief
           </h2>
           <p className="text-xl text-gray-600 mb-6">
-            Son solo 6 preguntas que nos ayudan a crear tu web perfecta. Tardás menos de 5 minutos.
+            Son solo 3 preguntas que nos ayudan a crear tu web perfecta. Tardás menos de 2 minutos.
           </p>
           <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
             <Clock className="w-4 h-4" />
-            <span className="text-sm">Tardás 1 minuto · Sin costo</span>
+            <span className="text-sm">Tardás 30 segundos · Sin costo</span>
           </div>
         </div>
 
@@ -234,34 +210,7 @@ Fecha: ${new Date().toLocaleString('es-AR')}`;
             {/* Pregunta 2 */}
             <div>
               <Label className="text-lg text-gray-900 mb-3 block">
-                2. ¿Quién es tu público objetivo? (describilo en una frase)
-              </Label>
-              <Input
-                placeholder="Ej: Familias de clase media que quieren remodelar su casa"
-                value={formData.target}
-                onChange={(e) => handleChange('target', e.target.value)}
-                required
-              />
-            </div>
-
-            {/* Pregunta 3 */}
-            <div>
-              <Label className="text-lg text-gray-900 mb-3 block">
-                3. ¿Cuál es tu oferta principal y tenés algún testimonio/prueba social?
-              </Label>
-              <Textarea
-                placeholder="Ej: Reformas integrales con garantía de 2 años. Cliente María dice: 'Terminaron en tiempo y forma, súper recomendable'"
-                value={formData.offer}
-                onChange={(e) => handleChange('offer', e.target.value)}
-                required
-                className="min-h-20"
-              />
-            </div>
-
-            {/* Pregunta 4 */}
-            <div>
-              <Label className="text-lg text-gray-900 mb-3 block">
-                4. ¿Tenés logo/colores preferidos y 2-3 webs de referencia que te gusten?
+                2. ¿Tenés logo/colores preferidos y 2-3 webs de referencia que te gusten?
               </Label>
               <Textarea
                 placeholder="Ej: Logo azul y blanco. Me gustan: ejemplo1.com, ejemplo2.com (por lo simple y claro)"
@@ -272,30 +221,16 @@ Fecha: ${new Date().toLocaleString('es-AR')}`;
               />
             </div>
 
-            {/* Pregunta 5 */}
+            {/* Pregunta 3 */}
             <div>
               <Label className="text-lg text-gray-900 mb-3 block">
-                5. ¿Cuál es tu WhatsApp y email principal de contacto?
+                3. ¿Cuál es tu WhatsApp y email principal de contacto?
               </Label>
               <Input
                 placeholder="Ej: WhatsApp: +54 9 11 1234-5678 / Email: contacto@tuempresa.com"
                 value={formData.contact}
                 onChange={(e) => handleChange('contact', e.target.value)}
                 required
-              />
-            </div>
-
-            {/* Pregunta 6 */}
-            <div>
-              <Label className="text-lg text-gray-900 mb-3 block">
-                6. ¿Tenés dominio propio y acceso a Google Analytics/Meta Business?
-              </Label>
-              <Textarea
-                placeholder="Ej: Dominio: miempresa.com / Analytics: no tengo / Meta: tengo Facebook pero no cuenta business"
-                value={formData.domain}
-                onChange={(e) => handleChange('domain', e.target.value)}
-                required
-                className="min-h-20"
               />
             </div>
 

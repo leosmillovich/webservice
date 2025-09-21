@@ -1,14 +1,83 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { Calendar, Clock, ArrowLeft, Share2, MessageCircle } from 'lucide-react';
 import { Button } from '../../components/ui/button';
 import BlogLayout from '../../components/blog/BlogLayout';
 import { BlogPost } from '../../components/blog/BlogCard';
 
-interface BlogPostPageProps {
-  post: BlogPost;
-}
+// Datos de ejemplo - en el futuro vendrán de un CMS o archivos markdown
+const blogPosts: BlogPost[] = [
+  {
+    slug: 'como-crear-pagina-web-negocio-local-2024',
+    title: 'Cómo crear una página web para tu negocio local en 2024',
+    excerpt: 'Guía completa paso a paso para crear tu página web profesional sin conocimientos técnicos. Incluye herramientas, costos y estrategias de marketing.',
+    content: 'Contenido completo del artículo...',
+    category: 'Tutoriales',
+    tags: ['página web', 'negocio local', 'marketing digital', 'SEO'],
+    publishedAt: '2024-01-15',
+    readTime: '8 min',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop'
+  },
+  {
+    slug: 'panaderia-multiplica-ventas-web',
+    title: 'De 0 a 50 clientes: cómo una panadería multiplicó sus ventas con su web',
+    excerpt: 'Caso real de una panadería que pasó de vender solo en el local a tener pedidos online constantes. Descubrí su estrategia paso a paso.',
+    content: 'Contenido completo del artículo...',
+    category: 'Casos de Éxito',
+    tags: ['caso de éxito', 'panadería', 'ventas online', 'WhatsApp'],
+    publishedAt: '2024-01-10',
+    readTime: '6 min',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&h=400&fit=crop'
+  },
+  {
+    slug: 'herramientas-gratuitas-contenido-web',
+    title: '10 herramientas gratuitas para crear contenido para tu web',
+    excerpt: 'Lista curada de herramientas gratuitas para crear imágenes, videos y contenido que harán que tu página web destaque de la competencia.',
+    content: 'Contenido completo del artículo...',
+    category: 'Herramientas',
+    tags: ['herramientas', 'contenido', 'diseño', 'gratis'],
+    publishedAt: '2024-01-05',
+    readTime: '5 min',
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=400&fit=crop'
+  },
+  {
+    slug: 'whatsapp-business-vs-whatsapp-web',
+    title: 'WhatsApp Business vs WhatsApp Web: ¿Cuál elegir para tu comercio?',
+    excerpt: 'Comparativa detallada entre WhatsApp Business y WhatsApp Web para ayudarte a elegir la mejor opción para tu negocio local.',
+    content: 'Contenido completo del artículo...',
+    category: 'Comparativas',
+    tags: ['WhatsApp', 'WhatsApp Business', 'comercio', 'comunicación'],
+    publishedAt: '2024-01-01',
+    readTime: '7 min',
+    featured: false
+  }
+];
 
-export default function BlogPostPage({ post }: BlogPostPageProps) {
+export default function BlogPostPage() {
+  const { slug } = useParams<{ slug: string }>();
+  
+  // Buscar el artículo por slug
+  const post = blogPosts.find(p => p.slug === slug);
+  
+  // Si no se encuentra el artículo, mostrar 404
+  if (!post) {
+    return (
+      <BlogLayout title="Artículo no encontrado">
+        <div className="text-center py-12">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">Artículo no encontrado</h1>
+          <p className="text-gray-600 mb-6">
+            El artículo que buscas no existe o fue eliminado.
+          </p>
+          <Button onClick={() => window.location.href = '/blog'}>
+            Volver al blog
+          </Button>
+        </div>
+      </BlogLayout>
+    );
+  }
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('es-AR', {

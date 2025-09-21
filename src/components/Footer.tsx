@@ -108,6 +108,9 @@ export default function Footer() {
                   <a href="#cases" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 block">
                     Casos de éxito
                   </a>
+                  <a href="/blog" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 block">
+                    Blog y consejos
+                  </a>
                   <a href="#brief" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 block">
                     Empezar proyecto
                   </a>

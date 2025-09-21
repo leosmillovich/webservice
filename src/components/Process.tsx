@@ -7,8 +7,8 @@ export default function Process() {
       number: "01",
       icon: FileText,
       title: "Mini-brief",
-      description: "Te mandamos 6 preguntas súper simples sobre tu negocio. Las completás en 5 minutos y tenemos todo claro.",
-      duration: "5 min",
+      description: "Te mandamos 3 preguntas súper simples sobre tu negocio. Las completás en 30 segundos y tenemos todo claro.",
+      duration: "30 seg",
       highlight: "Setup exprés (30 min)"
     },
     {

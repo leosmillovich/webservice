@@ -65,7 +65,7 @@ export default function Cases() {
             >
               {/* Imagen */}
               <div className="relative h-48 overflow-hidden">
-                s<ImageWithFallback priority={index === 0} placeholder="📊" 
+                <ImageWithFallback priority={index === 0} placeholder="📊" 
                   src={caseItem.image}
                   alt={`Caso de éxito: ${caseItem.business}`}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
